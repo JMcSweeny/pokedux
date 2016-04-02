@@ -1,0 +1,84 @@
+import { combineReducers } from 'redux';
+import entity from './entity';
+import * as ActionTypes from '../actions';
+
+const entities = combineReducers({
+	pokedexById: entity({
+		mapActionToKey: action => action.id,
+		types: [
+			ActionTypes.REQUEST_POKEDEX,
+			ActionTypes.RECEIVE_POKEDEX,
+			ActionTypes.FAILURE_POKEDEX
+		]
+	}),
+	pokemonById: entity({
+		mapActionToKey: action => action.id,
+		types: [
+			ActionTypes.REQUEST_POKEMON,
+			ActionTypes.RECEIVE_POKEMON,
+			ActionTypes.FAILURE_POKEMON
+		]
+	}),
+    pokemonSpeciesById: entity({
+		mapActionToKey: action => action.id,
+		types: [
+			ActionTypes.REQUEST_POKEMONSPECIES,
+			ActionTypes.RECEIVE_POKEMONSPECIES,
+			ActionTypes.FAILURE_POKEMONSPECIES
+		]
+	}),
+    evolutionById: entity({
+		mapActionToKey: action => action.id,
+		types: [
+			ActionTypes.REQUEST_EVOLUTION,
+			ActionTypes.RECEIVE_EVOLUTION,
+			ActionTypes.FAILURE_EVOLUTION
+		]
+	})
+});
+
+function selectedPokedex(state = 1, action) {
+	switch(action.type) {
+		case ActionTypes.SELECT_POKEDEX:
+			return action.id;
+		default:
+			return state;
+	}
+}
+
+function pokedexFilter(state = "", action) {
+	switch(action.type) {
+		case ActionTypes.FILTER_POKEDEX:
+			return action.text;
+		default:
+			return state;
+	}
+}
+
+function selectedPokemon(state = {id: 1, name: 'bulbasaur'}, action) {
+	switch(action.type) {
+		case ActionTypes.SELECT_POKEMON:
+			return action.pokemon;
+		default:
+			return state;
+	}
+}
+
+function pokemonVisible(state = false, action) {
+	switch(action.type) {
+		case ActionTypes.SHOW_POKEMON:
+			return action.visible;
+		default:
+			return state;
+	}
+}
+
+const rootReducer = combineReducers({
+	entities,
+	pokedexFilter,
+	selectedPokemon,
+	pokemonVisible,
+	selectedPokedex
+});
+
+export default rootReducer;

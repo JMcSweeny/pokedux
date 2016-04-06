@@ -52,7 +52,6 @@ input:focus {
     flex-direction: column;
 }
 
-
 /*
 ******************************************************************
                            PokemonSearch
@@ -438,7 +437,6 @@ input:focus {
     font-size: 1.1rem;
 }
 
-
 /*
 ******************************************************************
                            Card
@@ -461,6 +459,32 @@ input:focus {
     width: 100%;
     margin: .75em;
     font-size: 1.25rem;
+}
+
+/*
+******************************************************************
+                           Modal
+******************************************************************
+*/
+
+.modal {
+    position: fixed;
+    z-index: 99;
+    top: 100px;
+    width: 400px;
+    height: 400px;
+    left: 25%;
+    background-color: #FAFAFA;
+}
+
+.modal::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
 }
 
 /*

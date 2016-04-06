@@ -39,6 +39,16 @@ export const fetchEvolutionIfNeeded = entityAction({
     endpoint: 'evolution-chain'
 });
 
+export const REQUEST_MOVE = 'REQUEST_MOVE';
+export const RECEIVE_MOVE = 'RECEIVE_MOVE';
+export const FAILURE_MOVE = 'FAILURE_MOVE';
+
+export const fetchMoveIfNeeded = entityAction({
+    types: [REQUEST_MOVE, RECEIVE_MOVE, FAILURE_MOVE],
+    mapEntitiesToEntity: entities => entities.moveById,
+    endpoint: 'move'
+});
+
 export const SELECT_POKEDEX = 'SELECT_POKEDEX';
 
 export function selectPokedex(id) {
@@ -72,5 +82,14 @@ export function showPokemon(visible) {
 	return {
 		type: SHOW_POKEMON,
 		visible: visible
+	}
+}
+
+export const SELECT_MOVE = 'SELECT_MOVE';
+
+export function selectMove(id) {
+	return {
+		type: SELECT_MOVE,
+		id: id
 	}
 }

@@ -5,11 +5,6 @@ import flatten from 'lodash/flatten';
 import utils from '../utils';
 
 export default class PokemonEvolution extends Component {
-    
-    shouldComponentUpdate(nextProps) {
-        return nextProps.evolution !== this.props.evolution;
-    }
-    
      getEvolutions(evolutionChain) {
          return reduce(evolutionChain, (result, value) => {
              if(evolutionChain.evolves_to.length === 0) {

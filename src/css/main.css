@@ -106,8 +106,10 @@ input:focus {
 }
 
 .pokemon-search > .clear {
+    min-height: 28px;
     height: 28px;
     width: 28px;
+    min-width: 28px;
     margin-right: 25px;
 }
 

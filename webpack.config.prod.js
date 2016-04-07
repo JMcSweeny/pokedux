@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   	entry: [
@@ -33,7 +34,7 @@ module.exports = {
 		    },
             {
                 test: /\.css$/,
-                loader: 'style!css'
+                loader: 'style!css!postcss-loader'
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -41,6 +42,9 @@ module.exports = {
             }
         ]
   	},
+    postcss: function() {
+        return [autoprefixer]
+    },
     resolve: {
         extensions: ['', '.js', '.jsx']
     }

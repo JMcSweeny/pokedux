@@ -135,6 +135,7 @@ input:focus {
     flex-direction: column;
     align-items: center;
     background-color: #FAFAFA;
+    -webkit-overflow-scrolling: touch;
 }
 
 .pokemon-list-item {
@@ -196,6 +197,7 @@ input:focus {
     overflow-x: hidden;
     z-index: 2;
     flex-direction: column;
+    -webkit-overflow-scrolling: touch;
 }
 
 /*

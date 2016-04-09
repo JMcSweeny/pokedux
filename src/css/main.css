@@ -110,7 +110,7 @@ input:focus {
     height: 28px;
     width: 28px;
     min-width: 28px;
-    margin-right: 25px;
+    right: 25px;
     position: relative;
 }
 

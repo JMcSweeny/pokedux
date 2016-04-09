@@ -111,6 +111,7 @@ input:focus {
     width: 28px;
     min-width: 28px;
     margin-right: 25px;
+    position: relative;
 }
 
 .pokemon-search > .clear > img {

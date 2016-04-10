@@ -3,16 +3,11 @@ import { connect } from 'react-redux';
 import PokemonDetails from './PokemonDetails';
 import PokemonHeader from '../components/PokemonHeader';
 import Loading from '../components/Loading';
-import { 
-	fetchPokemonIfNeeded,
-    fetchPokemonSpeciesIfNeeded,
-	showPokemon
-} from '../actions';
+import { fetchPokemonIfNeeded, fetchPokemonSpeciesIfNeeded} from '../actions';
 
 class Pokemon extends Component {
 	constructor(props) {
 		super(props);
-		this.hidePokemon = this.hidePokemon.bind(this);
 	}
 
 	componentDidMount() {
@@ -25,10 +20,6 @@ class Pokemon extends Component {
 			this.props.fetchPokemonIfNeeded(nextProps.selectedPokemon.id);
             this.props.fetchPokemonSpeciesIfNeeded(nextProps.selectedPokemon.id);
 		}
-	}
-
-	hidePokemon() {
-		this.props.showPokemon(false);
 	}
 
 	getStyle(pokemonVisible) {
@@ -62,10 +53,11 @@ class Pokemon extends Component {
 
 		return (
 			<div style={style} className="pokemon">
-                <PokemonHeader
-                    selectedPokemon={selectedPokemon}
-                    onBackClick={this.hidePokemon} />
-                {this.renderPokemonDetails(pokemon, pokemonSpecies)}
+                <div className="pokemon-container">
+                    <PokemonHeader selectedPokemon={selectedPokemon} />
+                    {this.renderPokemonDetails(pokemon, pokemonSpecies)}
+                </div>
+                
 			</div>
 		);
 	}
@@ -79,12 +71,15 @@ Pokemon.propTypes = {
 	selectedPokemon: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
 	const { 
-		entities: { pokemonById, pokemonSpeciesById },
-		selectedPokemon,
-		pokemonVisible
-	 } = state;
+		entities: { pokemonById, pokemonSpeciesById }
+	} = state;
+
+    const selectedPokemon = {
+        id: ownProps.params.pokemonId,
+        name: ownProps.location.query.name
+    }
 
 	const pokemon = pokemonById[selectedPokemon.id] || {
 		isFetching: true,
@@ -99,13 +94,11 @@ function mapStateToProps(state) {
 	return {
 		pokemon,
         pokemonSpecies,
-		selectedPokemon,
-		pokemonVisible
+		selectedPokemon
 	}
 }
 
 export default connect(mapStateToProps, {
 	fetchPokemonIfNeeded,
-    fetchPokemonSpeciesIfNeeded,
-	showPokemon
+    fetchPokemonSpeciesIfNeeded
 })(Pokemon);

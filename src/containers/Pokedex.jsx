@@ -4,17 +4,11 @@ import PokemonList from '../components/PokemonList';
 import PokemonSearch from '../components/PokemonSearch';
 import Loading from '../components/Loading';
 import { filteredPokedexSelector } from '../selectors';
-import { 
-	fetchPokedexIfNeeded,
-	filterPokedex,
-	selectPokemon,
-	showPokemon
-} from '../actions';
+import { fetchPokedexIfNeeded, filterPokedex } from '../actions';
 
 class Pokedex extends Component {
 	constructor(props) {
 		super(props);
-		this.onPokemonClick = this.onPokemonClick.bind(this);
 		this.onPokemonSearch = this.onPokemonSearch.bind(this);
 	}
 
@@ -25,11 +19,12 @@ class Pokedex extends Component {
 	onPokemonSearch(text) {
 		this.props.filterPokedex(text);
     }
-
-	onPokemonClick(pokemon) {
-		this.props.selectPokemon(pokemon);
-		this.props.showPokemon(true);
-	}
+    
+    renderPokemon() {
+        if(this.props.location.pathname !== '/') {
+            return this.props.children;
+        }
+    }
 
 	render() {
 		const { pokedex, isFetching, pokedexFilter } = this.props;
@@ -43,11 +38,12 @@ class Pokedex extends Component {
 
 		return (
 			<div className="pokedex">
-				<PokemonSearch
-					handleChange={this.onPokemonSearch} />
-				<PokemonList 
-					pokemon={pokemonList}
-					onPokemonClick={this.onPokemonClick} />
+				<PokemonSearch handleChange={this.onPokemonSearch} />
+				<PokemonList pokemon={pokemonList} />
+                <div>
+                    {this.renderPokemon()}  
+                </div>
+                 
 			</div>
 		);
 	}
@@ -56,16 +52,12 @@ class Pokedex extends Component {
 Pokedex.propTypes = {
 	pokedex: PropTypes.object.isRequired,
 	fetchPokedexIfNeeded: PropTypes.func.isRequired,
-	selectPokemon: PropTypes.func.isRequired,
 	filterPokedex: PropTypes.func.isRequired,
 	isFetching: PropTypes.bool.isRequired,
-	showPokemon: PropTypes.func.isRequired,
 	pokemonFilter: PropTypes.string.isRequired
 };
 
 export default connect(filteredPokedexSelector, {
 	fetchPokedexIfNeeded,
-	selectPokemon,
-	filterPokedex,
-	showPokemon
+	filterPokedex
 })(Pokedex);

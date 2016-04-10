@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import entity from './entity';
 import * as ActionTypes from '../actions';
 
+
 const entities = combineReducers({
 	pokedexById: entity({
 		mapActionToKey: action => action.id,
@@ -63,24 +64,6 @@ function pokedexFilter(state = "", action) {
 	}
 }
 
-function selectedPokemon(state = {id: 1, name: 'bulbasaur'}, action) {
-	switch(action.type) {
-		case ActionTypes.SELECT_POKEMON:
-			return action.pokemon;
-		default:
-			return state;
-	}
-}
-
-function pokemonVisible(state = false, action) {
-	switch(action.type) {
-		case ActionTypes.SHOW_POKEMON:
-			return action.visible;
-		default:
-			return state;
-	}
-}
-
 function selectedMove(state = 0, action) {
 	switch(action.type) {
 		case ActionTypes.SELECT_MOVE:
@@ -93,8 +76,6 @@ function selectedMove(state = 0, action) {
 const rootReducer = combineReducers({
 	entities,
 	pokedexFilter,
-	selectedPokemon,
-	pokemonVisible,
 	selectedPokedex,
     selectedMove
 });

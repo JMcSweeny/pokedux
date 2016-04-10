@@ -37,6 +37,10 @@ input:focus {
 	outline: none;
 }
 
+a {
+    text-decoration: none;
+    color: #212121;
+}
 
 /*
 ******************************************************************
@@ -185,17 +189,24 @@ input:focus {
 */
 
 .pokemon {
-	display: none;
-	position: absolute;
+	display: flex;
 	width: 100%;
 	height: 100%;
-	top: 0;
-	left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
 	background-color: #FAFAFA;
+    flex-direction: column;
+}
+
+.pokemon-container {
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    z-index: 2;
-    flex-direction: column;
+    width: 100%;
+    height: 100%;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -248,7 +259,7 @@ input:focus {
 */
 
 .pokemon-details {
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
 }
 
 /*
@@ -401,7 +412,7 @@ input:focus {
     justify-content: space-around;
 }
 
-.evolution-card-content > .evolution {
+.evolution-card-content > a > .evolution {
     width: 100px;
     display: flex;
     flex-direction: column;
@@ -410,11 +421,11 @@ input:focus {
     margin: 5px;
 }
 
-.evolution-card-content > .evolution  > .name {
+.evolution-card-content > a > .evolution  > .name {
     text-transform: capitalize;
 }
 
-.evolution-card-content > .evolution  > .level {
+.evolution-card-content > a > .evolution  > .level {
     font-size: .75rem;
     color: #9E9E9E;
 }

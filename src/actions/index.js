@@ -67,24 +67,6 @@ export function filterPokedex(text) {
 	}
 }
 
-export const SELECT_POKEMON = 'SELECT_POKEMON';
-
-export function selectPokemon(pokemon) {
-	return {
-		type: SELECT_POKEMON,
-		pokemon: pokemon
-	}
-}
-
-export const SHOW_POKEMON = 'SHOW_POKEMON';
-
-export function showPokemon(visible) {
-	return {
-		type: SHOW_POKEMON,
-		visible: visible
-	}
-}
-
 export const SELECT_MOVE = 'SELECT_MOVE';
 
 export function selectMove(id) {

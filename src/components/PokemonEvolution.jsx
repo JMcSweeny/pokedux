@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import PokemonSprite from './PokemonSprite';
 import reduce from 'lodash/reduce';
 import flatten from 'lodash/flatten';
@@ -33,13 +34,15 @@ export default class PokemonEvolution extends Component {
     
     renderEvolution(evolution) {
         return (
-            <div className="evolution" onClick={() => this.props.onPokemonClick({id: evolution.id, name: evolution.name})} key={evolution.id}>
-                <PokemonSprite pokemonId={evolution.id} />
-                <div className="name">{evolution.name}</div>
-                {evolution.level && 
-                <div className="level">Level: {evolution.level}</div>
-                }
-            </div>
+            <Link to={{pathname: `/pokemon/${evolution.id}`, query: {name: evolution.name}}} key={evolution.id}>
+                <div className="evolution">
+                    <PokemonSprite pokemonId={evolution.id} />
+                    <div className="name">{evolution.name}</div>
+                    {evolution.level && 
+                    <div className="level">Level: {evolution.level}</div>
+                    }
+                </div>
+            </Link>
         );
     }
     
@@ -77,6 +80,5 @@ export default class PokemonEvolution extends Component {
 
 PokemonEvolution.propTypes = {
 	evolution: PropTypes.object.isRequired,
-    pokemonId: PropTypes.number.isRequired,
-    onPokemonClick: PropTypes.func.isRequired
+    pokemonId: PropTypes.number.isRequired
 } 

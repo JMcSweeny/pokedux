@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import utils from '../utils';
 
 export default class PokemonHeader extends Component {
@@ -8,14 +9,14 @@ export default class PokemonHeader extends Component {
     }
     
 	render() {
-		const { selectedPokemon, onBackClick } = this.props;
+		const { selectedPokemon } = this.props;
         
         const backIcon = require('../imgs/back_icon.png');
         let paddedNumber = utils.padNumber(selectedPokemon.id, 3);
 
 		return (
 			<div className="pokemon-header">
-                <img src={backIcon} onClick={onBackClick} />
+                <img src={backIcon} onClick={() => browserHistory.goBack()} />
                 <h1 className="number">{paddedNumber}</h1>
                 <h1 className="name">{selectedPokemon.name}</h1>
             </div>
@@ -24,6 +25,5 @@ export default class PokemonHeader extends Component {
 }
 
 PokemonHeader.propTypes = {
-	selectedPokemon: PropTypes.object.isRequired,
-    onBackClick: PropTypes.func.isRequired
+	selectedPokemon: PropTypes.object.isRequired
 }

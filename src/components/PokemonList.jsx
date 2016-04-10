@@ -10,7 +10,7 @@ export default class PokemonList extends Component {
     
 	render() {
 
-		const { pokemon, onPokemonClick } = this.props;
+		const { pokemon } = this.props;
 
 		let pokemonList = pokemon.map(p => {
 			const species = p.pokemon_species;
@@ -19,8 +19,7 @@ export default class PokemonList extends Component {
 				<PokemonListItem
 					key={p.entry_number}
 					number={p.entry_number}
-					name={species.name}
-					handleClick={() => onPokemonClick({id: p.entry_number, name: species.name})} />
+					name={species.name} />
 			);
 		});
 
@@ -33,6 +32,5 @@ export default class PokemonList extends Component {
 }
 
 PokemonList.propTypes = {
-	pokemon: PropTypes.array.isRequired,
-	onPokemonClick: PropTypes.func.isRequired
+	pokemon: PropTypes.array.isRequired
 }

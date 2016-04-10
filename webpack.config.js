@@ -11,6 +11,9 @@ module.exports = {
     	filename: 'bundle.js',
     	publicPath: '/dist/'
   	},
+    devServer: {
+        historyApiFallback: true
+    },
   	plugins: [
     	new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({

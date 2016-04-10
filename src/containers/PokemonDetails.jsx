@@ -5,24 +5,16 @@ import PokemonEvolution from '../components/PokemonEvolution';
 import PokemonInfo from '../components/PokemonInfo';
 import PokemonStats from '../components/PokemonStats';
 import PokemonMoves from '../components/PokemonMoves';
-import { 
-	fetchEvolutionIfNeeded,
-    selectPokemon
-} from '../actions';
+import { fetchEvolutionIfNeeded } from '../actions';
 
 class PokemonDetails extends Component {
 	constructor(props) {
 		super(props);
-        this.onPokemonClick = this.onPokemonClick.bind(this);
 	}
 
 	componentDidMount() {
 		this.props.fetchEvolutionIfNeeded(this.props.evolutionId);
-	}
-    
-    onPokemonClick(pokemon) {
-		this.props.selectPokemon(pokemon);
-	}
+	} 
 
 	render() {
 		const { pokemon, pokemonSpecies, evolution } = this.props;
@@ -38,7 +30,7 @@ class PokemonDetails extends Component {
                     <PokemonStats height={pokemon.data.height} weight={pokemon.data.weight} stats={pokemon.data.stats} />
                 </div>
                 <div className="evolution">
-                    <PokemonEvolution evolution={evolution.data} pokemonId={pokemon.data.id} onPokemonClick={this.onPokemonClick} />
+                    <PokemonEvolution evolution={evolution.data} pokemonId={pokemon.data.id} />
                 </div>
                 <div className="moves">
                     <PokemonMoves moves={pokemon.data.moves} />
@@ -50,7 +42,6 @@ class PokemonDetails extends Component {
 
 PokemonDetails.propTypes = {
 	fetchEvolutionIfNeeded: PropTypes.func.isRequired,
-    selectPokemon: PropTypes.func.isRequired,
 	evolution: PropTypes.object.isRequired,
     evolutionId: PropTypes.number.isRequired,
     pokemon: PropTypes.object.isRequired,
@@ -82,6 +73,5 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default connect(mapStateToProps, {
-	fetchEvolutionIfNeeded,
-    selectPokemon
+	fetchEvolutionIfNeeded
 })(PokemonDetails);

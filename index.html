@@ -8,6 +8,13 @@
 </head>
 <body>
 	<div id="root"></div>
+    <script> 
+        if(location.hash) {
+            var path = location.hash.substring(1);
+            history.pushState({}, "Pokedux", '/');
+            history.pushState({}, "Pokedux", path);
+        }
+    </script>
 	<script src="/dist/bundle.js"></script>
 </body>
 </html>

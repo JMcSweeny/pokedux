@@ -8,8 +8,8 @@ export default class PokemonSprite extends Component {
     
 	render() {
 		const { pokemonId } = this.props;
-
-        const spriteUrl = `http://pokeapi.co/media/sprites/pokemon/${pokemonId}.png`;
+		
+		const spriteUrl = require('../imgs/sprites/' + pokemonId + '.png');
 
 		return (
 			<div className="pokemon-sprite">

@@ -32,18 +32,17 @@ class Pokedex extends Component {
 
 		if(isFetching) {
 			return (
-                <Loading />
-            );
+        <Loading />
+      );
 		}
 
 		return (
 			<div className="pokedex">
 				<PokemonSearch handleChange={this.onPokemonSearch} />
 				<PokemonList pokemon={pokemonList} />
-                <div>
-                    {this.renderPokemon()}  
-                </div>
-                 
+        <div>
+          {this.renderPokemon()}  
+        </div>    
 			</div>
 		);
 	}

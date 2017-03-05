@@ -12,14 +12,14 @@ import './css/main.css';
 const store = configureStore();
 
 render(
-	<Provider store={store}>
-		<div className="content">
-            <Router history={browserHistory}>
-                <Route path="/" component={Pokedex}>
-                    <Route path="/pokemon/:pokemonId" component={Pokemon}></Route>
-                </Route>
-            </Router>
-		</div>
-	</Provider>, 
-	document.getElementById('root')
+  <Provider store={store}>
+    <div className="content">
+      <Router history={browserHistory}>
+        <Route path="/" component={Pokedex}>
+          <Route path="/pokemon/:pokemonId" component={Pokemon}></Route>
+        </Route>
+      </Router>
+    </div>
+  </Provider>,
+  document.getElementById('root')
 );

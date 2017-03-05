@@ -15,6 +15,3 @@ http://pokedux.jamesmcsweeny.com
 
 1. `npm run build`
 2. The bundled files will be in the /dist folder
-
-
-

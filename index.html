@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-	<title>Pokedux</title>
-</head>
-<body>
-	<div id="root"></div>
-    <script> 
-        if(location.hash) {
-            var path = location.hash.substring(1);
-            history.pushState({}, "Pokedux", '/');
-            history.pushState({}, "Pokedux", path);
-        }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <title>Pokedux</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      if (location.hash) {
+        var path = location.hash.substring(1);
+        history.pushState({}, "Pokedux", '/');
+        history.pushState({}, "Pokedux", path);
+      }
     </script>
-	<script src="/dist/bundle.js"></script>
-</body>
+    <script src="/dist/bundle.js"></script>
+  </body>
 </html>

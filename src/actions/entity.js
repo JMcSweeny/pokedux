@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-export const ROOT_URL = 'http://pokeapi.co/api/v2';
+export const ROOT_URL = 'https://pokeapi.co/api/v2';
 
 export default function entityAction({types, mapEntitiesToEntity, endpoint }) {
 	const [ requestType, successType, failureType ] = types;

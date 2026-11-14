@@ -3,6 +3,8 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+var repoBase = '/pokedux'
+
 module.exports = {
   entry: [
     './src/index'
@@ -10,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/pokedux/'
+    publicPath: repoBase + '/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -26,7 +28,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      inject: 'body'
+      inject: 'body',
+      repoBase: repoBase
+    }),
+    new HtmlWebpackPlugin({
+      template: '404.html',
+      filename: '404.html',
+      inject: false,
+      repoBase: repoBase
     })
   ],
   module: {

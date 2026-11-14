@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pokedux</title>
+    <script>
+      (function () {
+        var repoBase = '<%= htmlWebpackPlugin.options.repoBase || "" %>';
+        var path = window.location.pathname;
+        var relativePath = path.indexOf(repoBase) === 0
+          ? path.slice(repoBase.length)
+          : path;
+        var search = window.location.search ? '&q=' + encodeURIComponent(window.location.search.slice(1)) : '';
+        var hash = window.location.hash || '';
+        window.location.replace(
+          repoBase + '/?p=' + encodeURIComponent(relativePath || '/') + search + hash
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

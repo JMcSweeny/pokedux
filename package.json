@@ -7,8 +7,7 @@
     "clean": "rimraf dist",
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "start": "webpack-dev-server --hot --inline",
-    "deploy": "node deploy.js"
+    "start": "webpack-dev-server --hot --inline"
   },
   "author": "James McSweeny",
   "license": "ISC",
@@ -38,6 +37,7 @@
     "reselect": "^2.0.3",
     "rimraf": "^2.5.0",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.11"
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.16.5"
   }
 }

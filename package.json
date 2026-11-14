@@ -11,7 +11,6 @@
   "author": "James McSweeny",
   "license": "ISC",
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.1.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
@@ -21,9 +20,7 @@
     "redux-thunk": "^1.0.3"
   },
   "devDependencies": {
-    "autoprefixer": "^6.3.6",
-    "aws-sdk": "^2.175.0",
-    "mime-types": "^2.1.17",
+    "autoprefixer": "^10.6.2",
     "react-router": "^2.0.1",
     "reselect": "^2.0.3",
     "vite": "^8.3.8"

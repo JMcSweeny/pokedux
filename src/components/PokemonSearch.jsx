@@ -14,8 +14,8 @@ export default class PokemonSearch extends Component {
   render() {
     const { handleChange } = this.props;
 
-    const searchIcon = require('../imgs/search_icon.png');
-    const clearIcon = require('../imgs/clear_icon.png');
+    const searchIcon = `${import.meta.env.BASE_URL}imgs/search_icon.png`;
+    const clearIcon = `${import.meta.env.BASE_URL}imgs/clear_icon.png`;
 
     const hasInput = () => this.refs.search && this.refs.search.value;
 

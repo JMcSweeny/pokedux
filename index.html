@@ -3,25 +3,26 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <title>Pokedux</title>
     <script>
-      (function () {
-        var search = window.location.search;
-        if (search && search.indexOf('?p=') === 0) {
-          var params = new URLSearchParams(search);
-          var path = params.get('p') || '/';
-          var query = params.get('q');
-          var repoBase = '<%= htmlWebpackPlugin.options.repoBase || "" %>';
-          var cleanUrl = repoBase + (path.charAt(0) === '/' ? path : '/' + path) +
-            (query ? '?' + query : '') +
-            window.location.hash;
-          window.history.replaceState(null, null, cleanUrl);
-        }
+      (() => {
+        const { search, hash } = window.location;
+        if (!search.startsWith('?p=')) return;
+
+        const params = new URLSearchParams(search);
+        const path = params.get('p') || '/';
+        const query = params.get('q');
+        const repoBase = '__REPO_BASE__';
+        const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+        const cleanUrl = `${repoBase}${normalizedPath}${query ? `?${query}` : ''}${hash}`;
+
+        window.history.replaceState(null, null, cleanUrl);
       })();
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
   </body>
 </html>

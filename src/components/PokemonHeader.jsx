@@ -11,8 +11,9 @@ export default class PokemonHeader extends Component {
   render() {
     const { selectedPokemon } = this.props;
 
-    const backIcon = require('../imgs/back_icon.png');
     let paddedNumber = utils.padNumber(selectedPokemon.id, 3);
+    
+    const backIcon = `${import.meta.env.BASE_URL}imgs/back_icon.png`;
 
     return (
       <div className="pokemon-header">

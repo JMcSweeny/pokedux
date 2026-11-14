@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pokedux</title>
+    <script>
+      (() => {
+        const repoBase = '__REPO_BASE__';
+        const { pathname, search, hash } = window.location;
+        const relativePath = repoBase && pathname.startsWith(repoBase)
+          ? pathname.slice(repoBase.length)
+          : pathname;
+        const encodedQuery = search ? `&q=${encodeURIComponent(search.slice(1))}` : '';
+
+        window.location.replace(
+          `${repoBase}/?p=${encodeURIComponent(relativePath || '/')}${encodedQuery}${hash}`
+        );
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,5 +1,3 @@
-import 'babel-polyfill'
-
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -13,7 +11,7 @@ import './css/main.css';
 const store = configureStore();
 
 const history = useRouterHistory(createHistory)({
-  basename: process.env.NODE_ENV === 'production' ? '/pokedux' : '/'
+  basename: import.meta.env.PROD ? __REPO_BASE__ : '/'
 });
 
 render(

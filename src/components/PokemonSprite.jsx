@@ -9,7 +9,7 @@ export default class PokemonSprite extends Component {
   render() {
     const { pokemonId } = this.props;
 
-    const spriteUrl = require('../imgs/sprites/' + pokemonId + '.png');
+    const spriteUrl = `${import.meta.env.BASE_URL}imgs/sprites/${pokemonId}.png`;
 
     return (
       <div className="pokemon-sprite">
